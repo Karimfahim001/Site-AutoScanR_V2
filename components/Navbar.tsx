@@ -22,23 +22,18 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
   const handleNav = (view: ViewState) => {
     setView(view);
     setIsOpen(false);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-dark shadow-lg py-2' : 'bg-transparent py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
+
           {/* Logo */}
           <div className="flex items-center cursor-pointer group" onClick={() => handleNav(ViewState.HOME)}>
-            <div className="flex-shrink-0 flex items-center gap-2">
-              <div className="bg-gradient-to-br from-brand-primary to-blue-600 p-2 rounded-xl shadow-lg group-hover:shadow-brand-primary/50 transition-all duration-300">
-                <Car className="h-6 w-6 text-white" />
-              </div>
-              <span className={`font-display font-bold text-2xl tracking-tight transition-colors ${scrolled || currentView !== ViewState.HOME ? 'text-white' : 'text-white'}`}>
-                Auto<span className="text-brand-primary">ScanR</span>
-              </span>
+            <div className="flex-shrink-0 flex items-center">
+              <img src="/logo.png" alt="AutoScanR Logo" className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
           </div>
 
@@ -81,17 +76,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView }) => {
       {isOpen && (
         <div className="md:hidden glass-dark border-t border-white/10 absolute w-full">
           <div className="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-             {!isLoggedIn ? (
-                <>
-                  <button onClick={() => handleNav(ViewState.HOME)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Accueil</button>
-                  <button onClick={() => handleNav(ViewState.MEDIATION_CENTER)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Médiation & Conseils</button>
-                  <div className="h-px bg-white/10 my-2"></div>
-                  <button onClick={() => handleNav(ViewState.MOTORIST_LOGIN)} className="bg-brand-primary text-white block px-3 py-3 rounded-xl text-base font-bold w-full text-center shadow-lg">Espace Conducteur</button>
-                  <button onClick={() => handleNav(ViewState.GARAGE_LOGIN)} className="bg-white/10 text-brand-primary block px-3 py-3 rounded-xl text-base font-bold w-full text-center">Espace Garage</button>
-                </>
-              ) : (
-                <button onClick={() => handleNav(ViewState.HOME)} className="text-red-400 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Déconnexion</button>
-              )}
+            {!isLoggedIn ? (
+              <>
+                <button onClick={() => handleNav(ViewState.HOME)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Accueil</button>
+                <button onClick={() => handleNav(ViewState.MEDIATION_CENTER)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Médiation & Conseils</button>
+                <div className="h-px bg-white/10 my-2"></div>
+                <button onClick={() => handleNav(ViewState.MOTORIST_LOGIN)} className="bg-brand-primary text-white block px-3 py-3 rounded-xl text-base font-bold w-full text-center shadow-lg">Espace Conducteur</button>
+                <button onClick={() => handleNav(ViewState.GARAGE_LOGIN)} className="bg-white/10 text-brand-primary block px-3 py-3 rounded-xl text-base font-bold w-full text-center">Espace Garage</button>
+              </>
+            ) : (
+              <button onClick={() => handleNav(ViewState.HOME)} className="text-red-400 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Déconnexion</button>
+            )}
           </div>
         </div>
       )}

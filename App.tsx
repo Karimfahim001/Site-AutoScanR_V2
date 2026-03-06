@@ -14,28 +14,28 @@ const App: React.FC = () => {
     switch (currentView) {
       case ViewState.HOME:
         return <Home setView={setView} />;
-      
+
       case ViewState.MEDIATION_CENTER:
         return <MediationCenter setView={setView} />;
-      
+
       case ViewState.MOTORIST_LOGIN:
         return (
           <div className="min-h-screen flex items-center justify-center bg-gray-50 relative overflow-hidden">
             <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
             <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10 animate-fade-in-up">
               <div className="text-center mb-10">
-                 <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl mx-auto flex items-center justify-center mb-6 text-brand-primary">
-                   <Car size={32}/>
-                 </div>
-                 <h2 className="font-display text-3xl font-bold text-brand-dark">Bon retour !</h2>
-                 <p className="text-gray-500 mt-2">Accédez à votre espace conducteur</p>
+                <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl mx-auto flex items-center justify-center mb-6 text-brand-primary">
+                  <Car size={32} />
+                </div>
+                <h2 className="font-display text-3xl font-bold text-brand-dark">Bon retour !</h2>
+                <p className="text-gray-500 mt-2">Accédez à votre espace conducteur</p>
               </div>
               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setView(ViewState.MOTORIST_DASHBOARD); }}>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
                   <input type="email" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="vous@exemple.com" />
                 </div>
-                 <div>
+                <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Mot de passe</label>
                   <input type="password" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="••••••••" />
                 </div>
@@ -45,7 +45,7 @@ const App: React.FC = () => {
               </form>
               <div className="mt-8 text-center">
                 <button onClick={() => setView(ViewState.HOME)} className="text-sm text-gray-400 hover:text-brand-dark flex items-center justify-center gap-2 mx-auto transition-colors">
-                   <ArrowLeft size={16}/> Retour à l'accueil
+                  <ArrowLeft size={16} /> Retour à l'accueil
                 </button>
               </div>
             </div>
@@ -54,20 +54,20 @@ const App: React.FC = () => {
 
       case ViewState.GARAGE_LOGIN:
         return (
-           <div className="min-h-screen flex items-center justify-center bg-brand-dark relative">
+          <div className="min-h-screen flex items-center justify-center bg-brand-dark relative">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-primary/5 rounded-l-full"></div>
             <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10 overflow-hidden animate-fade-in-up">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-accent to-brand-primary"></div>
               <div className="text-center mb-10">
-                 <h2 className="font-display text-3xl font-bold text-brand-dark">Espace Pro</h2>
-                 <p className="text-gray-500 mt-2">Gérez vos opportunités AutoScanR</p>
+                <h2 className="font-display text-3xl font-bold text-brand-dark">Espace Pro</h2>
+                <p className="text-gray-500 mt-2">Gérez vos opportunités AutoScanR</p>
               </div>
               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setView(ViewState.GARAGE_DASHBOARD); }}>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Identifiant Garage</label>
                   <input type="text" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-accent focus:border-transparent transition bg-gray-50" defaultValue="MecaExpert_83" />
                 </div>
-                 <div>
+                <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Mot de passe</label>
                   <input type="password" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-accent focus:border-transparent transition bg-gray-50" placeholder="••••••••" />
                 </div>
@@ -75,9 +75,9 @@ const App: React.FC = () => {
                   Accéder au portail
                 </button>
               </form>
-               <div className="mt-8 text-center">
+              <div className="mt-8 text-center">
                 <button onClick={() => setView(ViewState.HOME)} className="text-sm text-gray-400 hover:text-brand-dark flex items-center justify-center gap-2 mx-auto transition-colors">
-                   <ArrowLeft size={16}/> Retour à l'accueil
+                  <ArrowLeft size={16} /> Retour à l'accueil
                 </button>
               </div>
             </div>
@@ -89,7 +89,7 @@ const App: React.FC = () => {
 
       case ViewState.GARAGE_DASHBOARD:
         return <GarageDashboard setView={setView} />;
-        
+
       default:
         return <Home setView={setView} />;
     }
@@ -100,7 +100,7 @@ const App: React.FC = () => {
       {currentView !== ViewState.MOTORIST_LOGIN && currentView !== ViewState.GARAGE_LOGIN && (
         <Navbar currentView={currentView} setView={setView} />
       )}
-      
+
       <main className="flex-grow">
         {renderContent()}
       </main>
@@ -109,26 +109,21 @@ const App: React.FC = () => {
         <footer className="bg-brand-dark text-gray-400 py-16 border-t border-white/5">
           <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-2 space-y-6">
-              <div className="flex items-center gap-2">
-                 <div className="bg-brand-primary p-2 rounded-lg">
-                   <Car className="h-6 w-6 text-white" />
-                 </div>
-                 <span className="font-display font-bold text-2xl text-white tracking-tight">
-                  Auto<span className="text-brand-primary">ScanR</span>
-                </span>
+              <div className="flex items-center">
+                <img src="/logo.png" alt="AutoScanR Logo" className="h-12 w-auto" />
               </div>
               <p className="text-base max-w-sm leading-relaxed">
                 La première borne de diagnostic autonome qui redonne le pouvoir aux automobilistes. Transparence, pédagogie et économies.
               </p>
               <div className="flex gap-4 pt-2">
-                 {[Instagram, Twitter, Linkedin].map((Icon, i) => (
-                    <a key={i} href="#" className="bg-white/5 hover:bg-brand-primary p-2 rounded-full text-white transition-all">
-                       <Icon size={18}/>
-                    </a>
-                 ))}
+                {[Instagram, Twitter, Linkedin].map((Icon, i) => (
+                  <a key={i} href="#" className="bg-white/5 hover:bg-brand-primary p-2 rounded-full text-white transition-all">
+                    <Icon size={18} />
+                  </a>
+                ))}
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-display font-bold text-white text-lg mb-6">Plateforme</h4>
               <ul className="space-y-4 text-sm">
@@ -138,22 +133,22 @@ const App: React.FC = () => {
                 <li><a href="#" className="hover:text-brand-primary transition-colors">Trouver une borne</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-display font-bold text-white text-lg mb-6">Contact</h4>
               <ul className="space-y-4 text-sm">
-                <li className="flex items-center gap-3"><Mail size={16} className="text-brand-primary"/> support@autoscanr.com</li>
-                <li className="flex items-center gap-3"><Phone size={16} className="text-brand-primary"/> +33 1 23 45 67 89</li>
-                <li className="flex items-center gap-3"><MapPin size={16} className="text-brand-primary"/> Paris, France</li>
+                <li className="flex items-center gap-3"><Mail size={16} className="text-brand-primary" /> support@autoscanr.com</li>
+                <li className="flex items-center gap-3"><Phone size={16} className="text-brand-primary" /> +33 1 23 45 67 89</li>
+                <li className="flex items-center gap-3"><MapPin size={16} className="text-brand-primary" /> Paris, France</li>
               </ul>
             </div>
           </div>
           <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs">
             <p>© 2023 AutoScanR. Tous droits réservés.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-               <a href="#" className="hover:text-white">Confidentialité</a>
-               <a href="#" className="hover:text-white">CGU</a>
-               <a href="#" className="hover:text-white">Cookies</a>
+              <a href="#" className="hover:text-white">Confidentialité</a>
+              <a href="#" className="hover:text-white">CGU</a>
+              <a href="#" className="hover:text-white">Cookies</a>
             </div>
           </div>
         </footer>
