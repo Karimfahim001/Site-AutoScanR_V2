@@ -1,0 +1,5 @@
+{
+  "name": "AutoScanR",
+  "description": "Borne de diagnostic automobile autonome et plateforme de mise en relation garage-automobiliste.",
+  "requestFramePermissions": []
+}
