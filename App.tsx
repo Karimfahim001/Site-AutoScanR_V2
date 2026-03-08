@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
 import MotoristDashboard from './pages/MotoristDashboard';
 import GarageDashboard from './pages/GarageDashboard';
 import MediationCenter from './pages/MediationCenter';
@@ -15,6 +16,9 @@ const App: React.FC = () => {
     switch (currentView) {
       case ViewState.HOME:
         return <Home setView={setView} />;
+
+      case ViewState.ABOUT_US:
+        return <AboutUs setView={setView} />;
 
       case ViewState.MEDIATION_CENTER:
         return <MediationCenter setView={setView} />;
@@ -126,6 +130,7 @@ const App: React.FC = () => {
             <h4 className="font-display font-bold text-white text-lg mb-6">Plateforme</h4>
             <ul className="space-y-4 text-sm">
               <li><button onClick={() => setView(ViewState.HOME)} className="hover:text-brand-primary transition-colors">Accueil</button></li>
+              <li><button onClick={() => setView(ViewState.ABOUT_US)} className="hover:text-brand-primary transition-colors">Qui sommes-nous ?</button></li>
               <li><button onClick={() => setView(ViewState.MEDIATION_CENTER)} className="hover:text-brand-primary transition-colors">Médiation & Conseils</button></li>
               <li><button onClick={() => setView(ViewState.GARAGE_LOGIN)} className="hover:text-brand-primary transition-colors">Espace Garage</button></li>
               <li><a href="#" className="hover:text-brand-primary transition-colors">Trouver une borne</a></li>

@@ -55,6 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUser
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-6">
               <button onClick={() => handleNav(ViewState.HOME)} className={`${isLightHeader && !scrolled ? 'text-gray-600 hover:text-brand-dark' : 'text-gray-200 hover:text-white'} text-sm font-medium transition-colors`}>Accueil</button>
+              <button onClick={() => handleNav(ViewState.ABOUT_US)} className={`${isLightHeader && !scrolled ? 'text-gray-600 hover:text-brand-dark' : 'text-gray-200 hover:text-white'} text-sm font-medium transition-colors`}>Qui sommes-nous ?</button>
               <button onClick={() => handleNav(ViewState.MEDIATION_CENTER)} className={`${isLightHeader && !scrolled ? 'text-gray-600 hover:text-brand-dark' : 'text-gray-200 hover:text-white'} text-sm font-medium transition-colors`}>Médiation</button>
               <div className={`h-6 w-px ${isLightHeader && !scrolled ? 'bg-black/10' : 'bg-white/10'} mx-2`}></div>
 
@@ -92,6 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUser
         <div className="md:hidden glass-dark border-t border-white/10 absolute w-full">
           <div className="px-4 pt-2 pb-6 space-y-2 flex flex-col">
             <button onClick={() => handleNav(ViewState.HOME)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Accueil</button>
+            <button onClick={() => handleNav(ViewState.ABOUT_US)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Qui sommes-nous ?</button>
             <button onClick={() => handleNav(ViewState.MEDIATION_CENTER)} className="text-gray-200 hover:text-white hover:bg-white/5 block px-3 py-3 rounded-xl text-base font-medium w-full text-left">Médiation & Conseils</button>
             <div className="h-px bg-white/10 my-2"></div>
 
