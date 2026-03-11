@@ -5,7 +5,8 @@ export enum ViewState {
   GARAGE_LOGIN = 'GARAGE_LOGIN',
   GARAGE_DASHBOARD = 'GARAGE_DASHBOARD',
   MEDIATION_CENTER = 'MEDIATION_CENTER',
-  ABOUT_US = 'ABOUT_US'
+  ABOUT_US = 'ABOUT_US',
+  CONTACT = 'CONTACT'
 }
 
 export interface User {

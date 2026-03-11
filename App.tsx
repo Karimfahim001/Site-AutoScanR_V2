@@ -5,12 +5,15 @@ import AboutUs from './pages/AboutUs';
 import MotoristDashboard from './pages/MotoristDashboard';
 import GarageDashboard from './pages/GarageDashboard';
 import MediationCenter from './pages/MediationCenter';
+import Contact from './pages/Contact';
 import { ViewState } from './types';
 import { Car, Mail, Phone, ArrowLeft, Instagram, Twitter, Linkedin, MapPin } from 'lucide-react';
+import LoginModal from './components/LoginModal';
 
 const App: React.FC = () => {
   const [currentView, setView] = useState<ViewState>(ViewState.HOME);
   const [userRole, setUserRole] = useState<'motorist' | 'garage' | null>(null);
+  const [showLoginSelection, setShowLoginSelection] = useState(false);
 
   const renderContent = () => {
     switch (currentView) {
@@ -22,6 +25,9 @@ const App: React.FC = () => {
 
       case ViewState.MEDIATION_CENTER:
         return <MediationCenter setView={setView} />;
+
+      case ViewState.CONTACT:
+        return <Contact setView={setView} />;
 
       case ViewState.MOTORIST_LOGIN:
         return (
@@ -102,7 +108,13 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-brand-dark">
-      <Navbar currentView={currentView} setView={setView} userRole={userRole} setUserRole={setUserRole} />
+      <Navbar 
+        currentView={currentView} 
+        setView={setView} 
+        userRole={userRole} 
+        setUserRole={setUserRole} 
+        setShowLoginSelection={setShowLoginSelection}
+      />
 
       <main className="flex-grow">
         {renderContent()}
@@ -132,7 +144,7 @@ const App: React.FC = () => {
               <li><button onClick={() => setView(ViewState.HOME)} className="hover:text-brand-primary transition-colors">Accueil</button></li>
               <li><button onClick={() => setView(ViewState.ABOUT_US)} className="hover:text-brand-primary transition-colors">Qui sommes-nous ?</button></li>
               <li><button onClick={() => setView(ViewState.MEDIATION_CENTER)} className="hover:text-brand-primary transition-colors">Médiation & Conseils</button></li>
-              <li><button onClick={() => setView(ViewState.GARAGE_LOGIN)} className="hover:text-brand-primary transition-colors">Espace Garage</button></li>
+              <li><button onClick={() => setShowLoginSelection(true)} className="hover:text-brand-primary transition-colors font-bold text-brand-primary">Connexion à mon compte</button></li>
               <li><a href="#" className="hover:text-brand-primary transition-colors">Trouver une borne</a></li>
             </ul>
           </div>
@@ -155,6 +167,16 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      <LoginModal 
+        isOpen={showLoginSelection} 
+        onClose={() => setShowLoginSelection(false)} 
+        onSelect={(view) => {
+          setShowLoginSelection(false);
+          setView(view);
+          window.scrollTo(0, 0);
+        }}
+      />
     </div>
   );
 };
