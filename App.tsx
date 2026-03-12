@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
@@ -7,13 +7,33 @@ import GarageDashboard from './pages/GarageDashboard';
 import MediationCenter from './pages/MediationCenter';
 import Contact from './pages/Contact';
 import { ViewState } from './types';
-import { Car, Mail, Phone, ArrowLeft, Instagram, Twitter, Linkedin, MapPin } from 'lucide-react';
+import { Car, Mail, Phone, ArrowLeft, Instagram, Twitter, Linkedin, MapPin, User } from 'lucide-react';
 import LoginModal from './components/LoginModal';
 
 const App: React.FC = () => {
   const [currentView, setView] = useState<ViewState>(ViewState.HOME);
   const [userRole, setUserRole] = useState<'motorist' | 'garage' | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
   const [showLoginSelection, setShowLoginSelection] = useState(false);
+
+  useEffect(() => {
+    const session = localStorage.getItem('autoscan_user');
+    if (session) {
+      try {
+        const user = JSON.parse(session);
+        setUserRole(user.role);
+        setUserName(`${user.firstName} ${user.lastName}`);
+      } catch (e) {}
+    }
+  }, []);
+
+  const handleLogin = (role: 'motorist' | 'garage', view: ViewState) => {
+    const user = { firstName: "Marc", lastName: "Dupont", role };
+    localStorage.setItem('autoscan_user', JSON.stringify(user));
+    setUserRole(role);
+    setUserName(`${user.firstName} ${user.lastName}`);
+    setView(view);
+  };
 
   const renderContent = () => {
     switch (currentView) {
@@ -36,12 +56,12 @@ const App: React.FC = () => {
             <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10 animate-fade-in-up">
               <div className="text-center mb-10">
                 <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl mx-auto flex items-center justify-center mb-6 text-brand-primary">
-                  <Car size={32} />
+                  <User size={32} />
                 </div>
-                <h2 className="font-display text-3xl font-bold text-brand-dark">Bon retour !</h2>
-                <p className="text-gray-500 mt-2">Accédez à votre espace conducteur</p>
+                <h2 className="font-display text-3xl font-bold text-brand-dark">Connexion</h2>
+                <p className="text-gray-500 mt-2">Accédez à votre espace AutoScanR</p>
               </div>
-              <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setUserRole('motorist'); setView(ViewState.MOTORIST_DASHBOARD); }}>
+              <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleLogin('motorist', ViewState.MOTORIST_DASHBOARD); }}>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
                   <input type="email" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="vous@exemple.com" />
@@ -54,7 +74,16 @@ const App: React.FC = () => {
                   Se connecter
                 </button>
               </form>
-              <div className="mt-8 text-center">
+              <div className="mt-6 text-center space-y-4">
+                <p className="text-gray-500 text-sm">
+                  Pas encore de compte ?{' '}
+                  <button 
+                    onClick={() => setView(ViewState.MOTORIST_REGISTER)}
+                    className="text-brand-primary font-bold hover:underline"
+                  >
+                    Créer un compte
+                  </button>
+                </p>
                 <button onClick={() => setView(ViewState.HOME)} className="text-sm text-gray-400 hover:text-brand-dark flex items-center justify-center gap-2 mx-auto transition-colors">
                   <ArrowLeft size={16} /> Retour à l'accueil
                 </button>
@@ -63,6 +92,59 @@ const App: React.FC = () => {
           </div>
         );
 
+      case ViewState.MOTORIST_REGISTER:
+        return (
+          <div className="min-h-screen flex items-center justify-center bg-gray-50 relative overflow-hidden">
+            <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+            <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10 animate-fade-in-up">
+              <div className="text-center mb-10">
+                <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl mx-auto flex items-center justify-center mb-6 text-brand-primary">
+                  <User size={32} />
+                </div>
+                <h2 className="font-display text-3xl font-bold text-brand-dark">Créer un compte</h2>
+                <p className="text-gray-500 mt-2">Rejoignez la communauté AutoScanR</p>
+              </div>
+              <form className="space-y-6" onSubmit={(e) => { 
+                e.preventDefault(); 
+                // Simulate registration success
+                setView(ViewState.MOTORIST_LOGIN);
+                window.scrollTo(0, 0);
+              }}>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Nom complet</label>
+                  <input type="text" required className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="Marc DUPONT" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
+                  <input type="email" required className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="vous@exemple.com" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Mot de passe</label>
+                  <input type="password" required className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="••••••••" />
+                </div>
+                <button type="submit" className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg shadow-brand-primary/30 text-base font-bold text-white bg-brand-primary hover:bg-brand-light transition transform hover:-translate-y-1">
+                  S'inscrire
+                </button>
+              </form>
+              <div className="mt-6 text-center space-y-4">
+                <p className="text-gray-500 text-sm">
+                  Déjà un compte ?{' '}
+                  <button 
+                    onClick={() => setView(ViewState.MOTORIST_LOGIN)}
+                    className="text-brand-primary font-bold hover:underline"
+                  >
+                    Se connecter
+                  </button>
+                </p>
+                <button onClick={() => setView(ViewState.HOME)} className="text-sm text-gray-400 hover:text-brand-dark flex items-center justify-center gap-2 mx-auto transition-colors">
+                  <ArrowLeft size={16} /> Retour à l'accueil
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
+
       case ViewState.GARAGE_LOGIN:
         return (
           <div className="min-h-screen flex items-center justify-center bg-brand-dark relative">
@@ -70,10 +152,10 @@ const App: React.FC = () => {
             <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10 overflow-hidden animate-fade-in-up">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-accent to-brand-primary"></div>
               <div className="text-center mb-10">
-                <h2 className="font-display text-3xl font-bold text-brand-dark">Espace Pro</h2>
-                <p className="text-gray-500 mt-2">Gérez vos opportunités AutoScanR</p>
+                <h2 className="font-display text-3xl font-bold text-brand-dark">Connexion Espace Pro</h2>
+                <p className="text-gray-500 mt-2">Accédez à votre espace AutoScanR</p>
               </div>
-              <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setUserRole('garage'); setView(ViewState.GARAGE_DASHBOARD); }}>
+              <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleLogin('garage', ViewState.GARAGE_DASHBOARD); }}>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Identifiant Garage</label>
                   <input type="text" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-accent focus:border-transparent transition bg-gray-50" defaultValue="MecaExpert_83" />
@@ -113,6 +195,8 @@ const App: React.FC = () => {
         setView={setView} 
         userRole={userRole} 
         setUserRole={setUserRole} 
+        userName={userName}
+        setUserName={setUserName}
         setShowLoginSelection={setShowLoginSelection}
       />
 

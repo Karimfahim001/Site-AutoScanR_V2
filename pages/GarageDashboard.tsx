@@ -447,7 +447,7 @@ const GarageDashboard: React.FC<GarageDashboardProps> = ({ setView }) => {
                         <h3 className="font-display font-bold text-xl text-brand-dark mb-6">Avis clients récents</h3>
                         <div className="space-y-4">
                            {[
-                              { name: 'Alexandre D.', rating: 5, comment: 'Super réactif et prix correct. Je recommande !' },
+                              { name: 'Marc DUPONT', rating: 5, comment: 'Super réactif et prix correct. Je recommande !' },
                               { name: 'Marie L.', rating: 4, comment: 'Bon travail, un peu long pour le devis.' },
                               { name: 'Pierre M.', rating: 5, comment: 'Excellent diagnostic, très professionnel.' },
                            ].map((review, i) => (

@@ -27,15 +27,15 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSelect }) =>
 
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2.5 bg-gray-100/50 hover:bg-white hover:shadow-md rounded-full text-gray-500 hover:text-brand-dark transition-all duration-300 z-10 group"
+          className="absolute top-6 left-6 p-2.5 bg-gray-100/50 hover:bg-white hover:shadow-md rounded-full text-gray-500 hover:text-brand-dark transition-all duration-300 z-10 group"
         >
           <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
         </button>
 
         <div className="p-10 relative z-10">
           <div className="text-center mb-10">
-            <h2 className="font-display text-4xl font-extrabold text-brand-dark mb-3 tracking-tight">Bienvenue sur <span className="text-brand-primary">AutoScanR</span></h2>
-            <p className="text-gray-500 text-lg font-light">Choisissez votre univers pour continuer l'aventure.</p>
+            <h2 className="font-display text-4xl font-extrabold text-brand-dark mb-3 tracking-tight">Choisissez votre espace</h2>
+            <p className="text-gray-500 text-lg font-light">Sélectionnez le type de compte qui correspond à vos besoins.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -50,13 +50,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSelect }) =>
                 <User size={28} />
               </div>
               
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col flex-grow">
                 <h3 className="font-display text-2xl font-bold text-brand-dark mb-3 group-hover:text-brand-primary transition-colors">Conducteur</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6 font-light">
+                <p className="text-sm text-gray-500 leading-relaxed mb-6 font-light flex-grow">
                   Mes diagnostics, mes rendez-vous et le suivi santé de mes véhicules.
                 </p>
                 
-                <div className="flex items-center text-sm font-bold text-brand-primary translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                <div className="flex items-center text-sm font-bold text-brand-primary translate-x-0 group-hover:translate-x-2 transition-transform duration-300 mt-auto">
                   Accéder à mon espace <ArrowRight size={16} className="ml-2" />
                 </div>
               </div>
@@ -73,13 +73,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSelect }) =>
                 <Wrench size={28} />
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col flex-grow">
                 <h3 className="font-display text-2xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Espace Pro</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6 font-light">
+                <p className="text-sm text-gray-500 leading-relaxed mb-6 font-light flex-grow">
                   Gérer les demandes, envoyer des devis et piloter votre activité.
                 </p>
 
-                <div className="flex items-center text-sm font-bold text-brand-accent translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                <div className="flex items-center text-sm font-bold text-brand-accent translate-x-0 group-hover:translate-x-2 transition-transform duration-300 mt-auto">
                   Portail partenaire <ArrowRight size={16} className="ml-2" />
                 </div>
               </div>

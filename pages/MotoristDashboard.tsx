@@ -13,7 +13,7 @@ interface MotoristDashboardProps {
 // MOCK DATA
 // ----------------------------------------------------------------------
 const MOCK_USER = {
-   name: "Alexandre D.",
+   name: "Marc DUPONT",
    vehicle: "Peugeot 308 (2019)",
    plate: "AB-123-CD",
    healthScore: 82, // Score on 100

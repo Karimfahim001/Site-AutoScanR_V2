@@ -7,10 +7,12 @@ interface NavbarProps {
   setView: (view: ViewState) => void;
   userRole: 'motorist' | 'garage' | null;
   setUserRole: (role: 'motorist' | 'garage' | null) => void;
+  userName?: string | null;
+  setUserName?: (name: string | null) => void;
   setShowLoginSelection: (show: boolean) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUserRole, setShowLoginSelection }) => {
+const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUserRole, userName, setUserName, setShowLoginSelection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,7 +32,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUser
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('autoscan_user');
     setUserRole(null);
+    if (setUserName) setUserName(null);
     handleNav(ViewState.HOME);
   };
 
@@ -80,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUser
                     onClick={handleMySpace}
                     className={`${scrolled ? 'bg-white text-brand-primary' : 'bg-brand-primary text-white'} hover:bg-brand-light hover:text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-brand-primary/40 transform hover:-translate-y-1`}
                   >
-                    <User size={16} /> Mon Espace
+                    <User size={16} /> {userName || 'Mon Espace'}
                   </button>
                   <button
                     onClick={handleLogout}
@@ -120,7 +124,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, userRole, setUser
               <button onClick={() => { setIsOpen(false); setShowLoginSelection(true); }} className="bg-brand-primary text-white block px-3 py-3 rounded-xl text-base font-bold w-full text-center shadow-lg">Connexion</button>
             ) : (
               <>
-                <button onClick={handleMySpace} className="bg-brand-primary text-white block px-3 py-3 rounded-xl text-base font-bold w-full text-center shadow-lg mb-2">Mon Espace</button>
+                <button onClick={handleMySpace} className="bg-brand-primary text-white block px-3 py-3 rounded-xl text-base font-bold w-full text-center shadow-lg mb-2">
+                  {userName || 'Mon Espace'}
+                </button>
                 <button onClick={handleLogout} className="text-red-400 border border-red-400/30 block px-3 py-3 rounded-xl text-base font-medium w-full text-center">Déconnexion</button>
               </>
             )}
