@@ -88,10 +88,10 @@ const Home: React.FC<HomeProps> = ({ setView }) => {
                         <span className="text-sm font-semibold tracking-wide text-gray-200">En service 24h/7j sans rendez-vous</span>
                      </div>
 
-                     <h1 className="font-display text-5xl lg:text-7xl font-bold leading-[1.15] tracking-tight">
-                        Comprenez votre voiture <br />
+                     <h1 className="font-display text-5xl lg:text-7xl font-bold leading-[1.15] tracking-tight text-white mb-6">
+                        Comprenez les problèmes <br />
                         <span className="relative inline-block mt-2">
-                           <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-light to-white">avant le garage.</span>
+                           <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-light to-white">de votre véhicule.</span>
                         </span>
                      </h1>
 

@@ -16,7 +16,7 @@ const GARAGE_INFO = {
 };
 
 const LEADS = [
-   { id: 1, car: 'Peugeot 308', year: 2019, plate: 'AB-123-CD', issue: 'Ratés Allumage (P0303)', distance: '2.5 km', urgency: 'high', time: 'Il y a 15 min', price: '180€ - 250€', status: 'new', customerName: 'Alexandre D.', symptoms: 'Bruit étrange au ralenti, voyant clignote.' },
+   { id: 1, car: 'Peugeot 308', year: 2019, plate: 'ZE124XF', issue: 'Ratés Allumage (P0303)', distance: '2.5 km', urgency: 'high', time: 'Il y a 15 min', price: '180€ - 250€', status: 'new', customerName: 'Marc DUPONT', symptoms: 'Bruit étrange au ralenti, voyant clignote.' },
    { id: 2, car: 'Renault Captur', year: 2021, plate: 'EF-456-GH', issue: 'Pression Pneus Basse', distance: '5.1 km', urgency: 'low', time: 'Il y a 1h', price: '50€', status: 'new', customerName: 'Marie L.', symptoms: '' },
    { id: 3, car: 'Citroën C3', year: 2018, plate: 'IJ-789-KL', issue: 'Filtre à Particules (P2002)', distance: '1.2 km', urgency: 'high', time: 'Il y a 3h', price: '300€ - 500€', status: 'quoted', customerName: 'Pierre M.', symptoms: 'Mode dégradé activé sur autoroute.' },
    { id: 4, car: 'Volkswagen Golf 7', year: 2017, plate: 'MN-012-OP', issue: 'Usure Plaquettes', distance: '8.4 km', urgency: 'medium', time: 'Il y a 1j', price: '120€ - 180€', status: 'quoted', customerName: 'Sophie R.', symptoms: 'Bruit métallique au freinage.' },

@@ -15,7 +15,7 @@ interface MotoristDashboardProps {
 const MOCK_USER = {
    name: "Marc DUPONT",
    vehicle: "Peugeot 308 (2019)",
-   plate: "AB-123-CD",
+   plate: "ZE124XF",
    healthScore: 82, // Score on 100
    ecoScore: 91,
 };
@@ -103,9 +103,9 @@ const MOCK_ISSUES_3: DiagnosticIssue[] = [
 ];
 
 const MOCK_REPORTS = [
-   { id: 1, date: "24 Oct 2023", location: "Borne Auchan Toulon", status: "warning", summary: "Ratés d'allumage cylindre 3", codes: ["P0303"], cost: "14.99€", issues: MOCK_ISSUES_1 },
-   { id: 2, date: "12 Aou 2023", location: "Borne Carrefour Ollioules", status: "warning", summary: "Défaillance capteur ABS (C0035)", codes: ["C0035"], cost: "14.99€", issues: MOCK_ISSUES_2 },
-   { id: 3, date: "05 Mai 2023", location: "Borne Leclerc La Seyne", status: "warning", summary: "Débit Insuffisant Vanne EGR", codes: ["P0401"], cost: "14.99€", issues: MOCK_ISSUES_3 }
+   { id: 1, date: "13 mars 2026", location: "Borne Auchan Toulon", status: "warning", summary: "Ratés d'allumage cylindre 3", codes: ["P0303"], cost: "14.99€", issues: MOCK_ISSUES_1 },
+   { id: 2, date: "13 mars 2026", location: "Borne Carrefour Ollioules", status: "warning", summary: "Défaillance capteur ABS (C0035)", codes: ["C0035"], cost: "14.99€", issues: MOCK_ISSUES_2 },
+   { id: 3, date: "13 mars 2026", location: "Borne Leclerc La Seyne", status: "warning", summary: "Débit Insuffisant Vanne EGR", codes: ["P0401"], cost: "14.99€", issues: MOCK_ISSUES_3 }
 ];
 
 const MOCK_QUOTES = [
@@ -607,7 +607,7 @@ export const MotoristDashboard: React.FC<MotoristDashboardProps> = ({ setView })
                                  <div className="flex items-center gap-6 text-sm font-bold text-gray-600">
                                     <div className="flex items-center gap-2">
                                        <Calendar size={16} className="text-brand-primary" />
-                                       <span>Lun. 30 Oct 2023</span>
+                                        <span>Ven. 13 Mars 2026</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-primary"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
@@ -858,8 +858,8 @@ export const MotoristDashboard: React.FC<MotoristDashboardProps> = ({ setView })
                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider">Historique</h3>
                      <div className="flex flex-col gap-4">
                         {[
-                           { garage: 'Garage du Port', date: '15 Sep 2023', time: '14:00', status: 'completed', diagnostic: 'Révision complète' },
-                           { garage: 'Garage Speedy', date: '02 Juil 2023', time: '10:30', status: 'completed', diagnostic: 'Changement plaquettes de frein' },
+                           { garage: 'Garage du Port', date: '15 Sep 2023', time: '14:00', status: 'completed' },
+                           { garage: 'Garage Speedy', date: '02 Juil 2023', time: '10:30', status: 'completed' },
                         ].map((rdv, i) => (
                            <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col md:flex-row md:items-center gap-4">
                               <div className="flex items-center gap-3 flex-1">
@@ -868,7 +868,6 @@ export const MotoristDashboard: React.FC<MotoristDashboardProps> = ({ setView })
                                  </div>
                                  <div>
                                     <h4 className="font-bold text-brand-dark text-sm">{rdv.garage}</h4>
-                                    <p className="text-xs text-gray-500">{rdv.diagnostic}</p>
                                  </div>
                               </div>
                               <div className="flex items-center gap-4 text-xs font-bold text-gray-500">
@@ -1019,7 +1018,7 @@ export const MotoristDashboard: React.FC<MotoristDashboardProps> = ({ setView })
 
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
-                           { icon: MapPin, label: 'Email', value: 'alexandre.dupont@email.com' },
+                           { icon: MapPin, label: 'Email', value: 'marc.dupont@gmail.com' },
                            { icon: Car, label: 'Téléphone', value: '06 12 34 56 78' },
                         ].map((item, i) => (
                            <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100 flex items-center gap-4">

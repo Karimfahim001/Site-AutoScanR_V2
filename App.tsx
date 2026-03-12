@@ -64,7 +64,7 @@ const App: React.FC = () => {
               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleLogin('motorist', ViewState.MOTORIST_DASHBOARD); }}>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                  <input type="email" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="vous@exemple.com" />
+                  <input type="email" className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="marc.dupont@gmail.com" />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Mot de passe</label>
@@ -116,7 +116,7 @@ const App: React.FC = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Email</label>
-                  <input type="email" required className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="vous@exemple.com" />
+                  <input type="email" required className="block w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition bg-gray-50 focus:bg-white" placeholder="marc.dupont@gmail.com" />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Mot de passe</label>
